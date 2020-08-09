@@ -1,36 +1,25 @@
-import React from "react"
-import { StyleSheet, Image, View, Dimensions, Text } from "react-native";
-import picMongo from "./assets/mongo.jpg"
-import picMongo2 from "./assets/mongo2.jpg"
+import React, {useState} from "react";
+import {View, StyleSheet} from "react-native";
+import ColorButton from "./components/ColorButton"
 
-export default function App(){
-    return(
-        <View style={styles.page}>
-            <Text style={styles.text}>Cat Spam!</Text>
-            <Image style={styles.image} source={picMongo}></Image>
-            <Image style={styles.image} source={picMongo2}></Image>
+export default function App() {
+    const [backgroundColor, setBackgroundColor] = useState("blue");
+    return (
+        <View style={[styles.container, {backgroundColor}]}>
+            <ColorButton backgroundColor="red" onPress={setBackgroundColor}/>
+            <ColorButton backgroundColor="purple" onPress={setBackgroundColor}/>
+            <ColorButton backgroundColor="blue" onPress={setBackgroundColor}/>
+            <ColorButton backgroundColor="green" onPress={setBackgroundColor}/>
+            <ColorButton backgroundColor="yellow" onPress={setBackgroundColor}/>
         </View>
     );
 }
 
 const styles = StyleSheet.create({
-    page: {
+    container: {
         flex: 1,
-        alignItems: "center",
+        display: "flex",
         justifyContent: "center",
+        alignItems: "center"
     },
-    text: {
-        flex: 0.2,
-        fontSize: 40,
-        marginTop: 40,
-        padding: 5
-    },
-    image: {
-        flex: 1,
-        borderRadius: 50,
-        margin: 10,
-        width: Dimensions.get("window").width - 10
-    }
 });
-
-// css-tricks.com for a guide to Flexbox
